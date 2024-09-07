@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: ['1.14', '1.15']
+        go: ['1.22.3', '1.22.2']
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
         with:
-          go-version: ${ {go }}
-      - run: go test
+          go-version: ${{ matrix.go }}
+      - run: go test ./...
       - run: go run math.go
